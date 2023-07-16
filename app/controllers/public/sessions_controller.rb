@@ -8,13 +8,13 @@ class Public::SessionsController < Devise::SessionsController
    before_action :authenticate_customer!, except: [:top, :about]
 
   # サインイン後の遷移
-  def after_sign_in_path_for(resource)
-    public_homes_path  #(current_user)
-  end
+  # def after_sign_in_path_for(resource)
+    # public_homes_path  #(current_user)
+  # end
 
- def after_sign_out_path_for(resource)
-    public_homes_path
- end
+ # def after_sign_out_path_for(resource)
+    # public_homes_path
+ # end
    protected
 
    def configure_permitted_parameters
