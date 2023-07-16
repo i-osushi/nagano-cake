@@ -22,19 +22,12 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-<<<<<<< HEAD
-=======
 
-
->>>>>>> origin/develop
   
   scope module: :public do
     root to: 'homes#top'
     get '/home/about' => 'homes#about', as: 'about'
   end
-<<<<<<< HEAD
-=======
-  
->>>>>>> origin/develop
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
