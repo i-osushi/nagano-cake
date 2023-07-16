@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+# 確認事項
 class Public::ConfirmationsController < Devise::ConfirmationsController
   # GET /resource/confirmation/new
   # def new
