@@ -1,6 +1,6 @@
 <div class="container mt-5 pb-5">
   <div class="col-md-12">
-    <h4 class="mb-3 ml-5"><span style="background: #FFEBD2;">注文履歴一覧</span></h4>
+    <h4 class="mb-3 ml-5">注文履歴一覧</h4>
 
     <table class="table col-md-10 text-center">
   　　<thead>
@@ -12,9 +12,24 @@
         </tr>
       </thead>
       <tbody>
-        
+        <% @orders.each do |order| %>
+          <tr class="text-center">
+              <!--購入日時-->
+            <td>
+              <%= link_to admin_order_path(order) do %>
+                <%= l order.created_at,format: :time %>
+              <% end %>
+            </td>
+              <!--購入者名-->
+            <td class="align-middle"><%= order.customer.full_name %></td>
+              <!--注文個数-->
+            <td class="align-middle"><%= order.order_items.sum(:count) %></td>
+              <!--注文ステータス-->
+            <td class="align-middle"><%= order.status_i18n %></td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
-    </div>
+
   </div>
 </div>

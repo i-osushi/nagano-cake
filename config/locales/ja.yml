@@ -16,7 +16,7 @@ ja:
     - 金
     - 土
     abbr_month_names:
-    - 
+    -
     - 1月
     - 2月
     - 3月
@@ -42,7 +42,7 @@ ja:
       long: "%Y年%m月%d日(%a)"
       short: "%m/%d"
     month_names:
-    - 
+    -
     - 1月
     - 2月
     - 3月
@@ -174,9 +174,26 @@ ja:
       two_words_connector: "、"
       words_connector: "、"
   time:
-    am: 午前
     formats:
       default: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
-    pm: 午後
+    
+  enums:
+      order:
+        payment_method:
+          credit_card: "クレジットカード"
+          transfer: "銀行振込"
+        status:
+          waiting_payment: "入金待ち"
+          confirm_payment: "入金確認"
+          producting: "製作中"
+          waiting_delivery: "発送準備中"
+          start_delivery: "発送済み"
+          
+      order_detail:
+        product_status:
+          impossible: "着手不可"
+          waiting: "製作待ち"
+          production: "製作中"
+          completion: "製作完了"
