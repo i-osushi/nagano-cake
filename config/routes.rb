@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
  
-  # 管理者用(devise)
+  # 管理者用
+  
   # URL /admin/sign_in ...
-
  namespace :admin do
    get "/homes" => "homes#top"
    resources :items, only:[:index, :create, :new, :show, :edit, :update]
@@ -16,17 +16,18 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
 
-  # 顧客用(devise)
+  # 顧客用
+  
   # URL /customers/sign_in ...
   devise_for :customers,skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-
 # public（顧客側のルーディング）
   scope module: :public do
     root to: 'homes#top'
     get '/about' => 'homes#about', as: 'about'
+    
     # 会員
     resources :customers, only: [:show, :edit, :update]
     get "customers/confirm_withdraw" => "customers#confirm_withdraw"
@@ -36,7 +37,9 @@ Rails.application.routes.draw do
     # カート内商品
     resources :cart_items, only: [:create, :index, :update, :destroy]
     delete "cart_items/destroy_all" => "cart_items#destroy_all"
-    
+    # 注文
+    resources :orders, only:[:new, :confirm, :complete, :index, :show]
+
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

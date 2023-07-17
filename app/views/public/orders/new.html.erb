@@ -1,0 +1,21 @@
+
+<div class='container'>
+  <div class='row'>
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5">
+      <h4>注文情報入力</h4>
+      <%= form_with model: @order, url: "/orders/confirm", method: :post, local: true do |f| %>
+      
+      <h5><strong>支払方法</strong></h5>
+      <%= f.radio_button :payment_method, "credit_card" %>
+      <%= f.label :payment_method_credit_card, "クレジットカード" %>
+
+      <%= f.radio_button :payment_method, "transfer" %>
+      <%= f.label :payment_method_transfer, "銀行振込" %>
+
+    </div>
+  </div>
+</div>
+
+<div style=”background-color:#dcdcdc”>
+
+</div>
