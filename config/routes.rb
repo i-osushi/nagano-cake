@@ -29,13 +29,16 @@ Rails.application.routes.draw do
     get '/about' => 'homes#about', as: 'about'
     
     # 会員
-    resources :customers, only: [:show, :edit, :update]
+    get "customers/information" => "customers#show"
+    get "customers/information/edit" => "customers#edit"
+    patch "customers/information" => "customers#update"
     get "customers/confirm_withdraw" => "customers#confirm_withdraw"
     patch "customers/withdraw" => "customers#withdraw"
     # 商品
     resources :items, only: [:index, :show]
     # カート内商品
-    resources :cart_items, only: [:create, :index, :update, :destroy]
+    resources :cart_items, only: [:create, :index, :destroy]
+    patch "cart_items/:id" => "cart_items#update"
     delete "cart_items/destroy_all" => "cart_items#destroy_all"
     # 注文
     resources :orders, only:[:new, :confirm, :complete, :index, :show]
