@@ -13,22 +13,37 @@
   </div>
   <div class="form-group">
   <%= f.label :name %>
-  <%= f.text_field :name, class: 'form-control ', placeholder: "令和道子" %>  
+  <%= f.text_field :name, class: 'form-control ', placeholder: "令和道子" %>
   </div>
   <% end %>
+  <%= link_to "新規登録", addresses_path, method: :post, class: "btn btn-sm btn-success float-end" %>
     </div>
   </div>
 </div>
 
-<table class="">
+<div class='row'>
+<div class="col-sm-12 col-md-8 col-lg-5 px-5">
+<table class="table table-active table-bordered " >
   <thead>
     <tr>
-      <th></th>
+      <th>郵便番号</th>
+      <th>住所</th>
+      <th>宛名</th>
+      <th colspan="4"></th>
     </tr>
   </thead>
+
   <tbody>
+  <% @addresses.each do |addresses| %>
     <tr>
-      <td></td>
+      <td><%= addresses.postal_code %></td>
+      <td><%= addresses.address%></td>
+      <td><%= addresses.name%></td>
+      <td><%= link_to "編集する", edit_address_path(addresses.id), class: "btn btn-sm btn-success float-end" %>
+          <%= link_to "削除する", address_path(addresses.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger float-end" %></td>
     </tr>
   </tbody>
+  <% end %>
 </table>
+</div>
+</div>
