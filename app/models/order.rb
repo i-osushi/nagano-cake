@@ -4,4 +4,6 @@ class Order < ApplicationRecord
 # order_detailsが中間テーブルであり実際結びつけるモデルを指定
  has_many :items, through: :order_details
 
+
+
 end
