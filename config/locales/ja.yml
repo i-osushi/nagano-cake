@@ -195,5 +195,5 @@ ja:
         product_status:
           impossible: "着手不可"
           waiting: "製作待ち"
-          production: "製作中"
+          producting: "製作中"
           completion: "製作完了"
