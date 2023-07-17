@@ -42,7 +42,8 @@ Rails.application.routes.draw do
     delete "cart_items/destroy_all" => "cart_items#destroy_all"
     # 注文
     resources :orders, only:[:new, :confirm, :complete, :index, :show]
-
+    # 配送先
+    resources :addresses, only:[:index, :edit, :create, :update, :destroy]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
