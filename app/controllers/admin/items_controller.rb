@@ -1,5 +1,5 @@
 class Admin::ItemsController < ApplicationController
-  before_action :authenticate_admin
+  before_action :authenticate_admin!
   before_action :set_select_genres
 
     def index
@@ -20,7 +20,7 @@ class Admin::ItemsController < ApplicationController
           flash[:notice] = "Book was successfully updated."
           redirect_to admin_items_path(@item)
         else
-          render 'new'
+          render 'index'
         end
     end
     def edit
