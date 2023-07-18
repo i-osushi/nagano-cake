@@ -8,7 +8,7 @@ has_many :orders, through: :order_details
 has_many :cart_items, dependent: :destroy
 
 # ジャンルidとのアソシエーション
-blongs_to :genre, foreign_key: 'genre_id'
+belongs_to :genre, foreign_key: 'genre_id'
 # ActiveStorage
 has_one_attached :image
 
