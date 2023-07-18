@@ -5,7 +5,7 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   # カート内商品：会員 = N : 1
-  has_many :cart_items
+  has_many :cart_items, dependent: :destroy
   
   has_many :addresses, dependent: :destroy
   
