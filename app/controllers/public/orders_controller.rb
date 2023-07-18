@@ -14,6 +14,11 @@ class Public::OrdersController < ApplicationController
   def index
   end
 
-  def show
+  # def show
+  # end
+  
+  def order_params
+     params.require(:order).permit(:name)
   end
+  
 end
