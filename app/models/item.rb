@@ -8,7 +8,7 @@ has_many :orders, through: :order_details
 has_many :cart_items, dependent: :destroy
 
 # ジャンルidとのアソシエーション
-blongs_to :genre, foreign_key: 'genre_id'
+belongs_to :genre, foreign_key: 'genre_id'
 # ActiveStorage
 has_one_attached :image
 
@@ -16,6 +16,7 @@ validates :name, presence: true
 validates :introduction, presence: true
 validates :genre, presence: true
 validates :price, presence: true
+# validates :image, presence: true
 
   def get_image(height, width)
     unless image.attached?
