@@ -7,9 +7,8 @@ class Public::AddressesController < ApplicationController
 
   def create
     @address = Address.new(address_params)
-    @address.customer_id = current_customer.id
      if @address.save
-       flash[:notice] = "You have created new address successfully."
+      flash[:notice] = "You have created new address successfully."
        redirect_to addresses_path(@address.id)
      else
       @addresses = Address.all
@@ -18,6 +17,7 @@ class Public::AddressesController < ApplicationController
   end
 
   def edit
+    @address = Address.find(params[:id])
 
   end
 
@@ -32,7 +32,7 @@ class Public::AddressesController < ApplicationController
 
   private
   def address_params
-    params.require(:addresses).permit(:customer_id, :name, :address, :postal_code )
+    params.require(:address).permit(:name, :address, :postal_code )
   end
 
 end
