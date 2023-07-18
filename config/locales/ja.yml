@@ -178,7 +178,7 @@ ja:
       default: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
-    
+
   enums:
       order:
         payment_method:
@@ -190,7 +190,7 @@ ja:
           producting: "製作中"
           waiting_delivery: "発送準備中"
           start_delivery: "発送済み"
-          
+
       order_detail:
         product_status:
           impossible: "着手不可"

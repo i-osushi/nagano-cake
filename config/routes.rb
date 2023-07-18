@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
- 
+
   # 管理者用
-  
+
   # URL /admin/sign_in ...
  namespace :admin do
    get "/homes" => "homes#top"
@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   }
 
   # 顧客用
-  
+
   # URL /customers/sign_in ...
   devise_for :customers,skip: [:passwords], controllers: {
     registrations: "public/registrations",
@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     get '/about' => 'homes#about', as: 'about'
-    
+
     # 会員
     get "customers/information" => "customers#show"
     get "customers/information/edit" => "customers#edit"
