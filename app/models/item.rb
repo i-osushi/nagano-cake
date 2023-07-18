@@ -11,7 +11,7 @@ has_many :cart_items
 blongs_to :genre, foreign_key: 'genre_id'
 
 has_one_attached :image
- 
+
 validates :name, presence: true
 validates :introduction, presence: true
 validates :genre, presence: true
@@ -24,7 +24,7 @@ def get_image(height, width)
     end
     image.variant(resize_to_limit: [height, width]).processed
   end
-  
+
   def add_tax_price
     tax = 1.1
     (self.price * tax).round
