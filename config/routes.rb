@@ -41,10 +41,9 @@ Rails.application.routes.draw do
     patch "cart_items/:id" => "cart_items#update"
     delete "cart_items/destroy_all" => "cart_items#destroy_all"
     # 注文
-    resources :orders, only:[:new, :complete, :index, :show, :create]
     post "/orders/confirm" => "orders#confirm"
-    get  "/orders/complete " => "orders#complete "
-
+    get  "/orders/complete" => "orders#complete"
+    resources :orders, only:[:new, :index, :show, :create]
     # 配送先
     resources :addresses, only:[:index, :edit, :create, :update, :destroy]
   end
