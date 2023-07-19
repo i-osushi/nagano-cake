@@ -2,13 +2,15 @@ class Public::OrdersController < ApplicationController
   # before_action :authenticate_customers!
   def new
     @order = Order.new
-    @addresses = current_customer.addresses.all
+    @customer = Customer.pluck(:name, :id)
+
   end
 
   def confirm
     @order = Order.new(order_params)
     
     if params[:order][:select_address] == "0"
+      
       
     end
 
