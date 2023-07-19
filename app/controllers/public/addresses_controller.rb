@@ -7,7 +7,8 @@ class Public::AddressesController < ApplicationController
 
   def create
     @address = Address.new(address_params)
-     if @address.save
+    @address.customer_id = current_customer.id
+     if @address.save!
       flash[:notice] = "You have created new address successfully."
        redirect_to addresses_path
      else
@@ -21,11 +22,20 @@ class Public::AddressesController < ApplicationController
 
   end
 
-  def updat
-
+  def update
+    @address = Address.find(params[:id])
+    if @address.update(address_params)
+      flash[:notice] = "You have updated address successfully."
+      redirect_to addresses_path
+    else
+      render :edit
+    end
   end
 
   def destroy
+    @address = Address.find(params[:id])
+    @address.destroy
+    redirect_to addresses_path
 
   end
 
