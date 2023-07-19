@@ -20,12 +20,26 @@
       <h5>お届け先</h5>
         <div>
           <!--ラジオボタン　ご自身の住所-->
-          <%= f.radio_button :payment_method, "credit_card" %>
-          <%= f.label :payment_method_credit_card, "クレジットカード" %>
-          
+          <%= f.radio_button :select_address, Order.select_addresses.key(0) %>
+          <%= f.label :select_address_own_address, Order.select_addresses_i18n[:own_address] %><br>
+          〒<%= current_customer.postal_code %>
+          <%= current_customer.address %><br>
+          <%= current_customer.last_name %><%= current_customer.first_name %>
+
+        </div>
+        
           <!--ラジオボタン　登録済み住所から選択　ドロップダウン-->
+          <div>
+          <%= f.radio_button :select_address, Order.select_addresses.key(1) %>
+          <%= f.label :select_address_own_address, Order.select_addresses_i18n[:registered_address] %>
+          </div>
           
           <!--ラジオボタン　新しいお届け先-->
+          <div>
+          <%= f.radio_button :select_address, Order.select_addresses.key(2) %>
+          <%= f.label :select_address_own_address, Order.select_addresses_i18n[:new_address] %>
+          </div>
+          
         </div>
      <% end %>
     </div>
