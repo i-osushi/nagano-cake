@@ -31,6 +31,8 @@ Rails.application.routes.draw do
     # 会員
     # resources :customers, path: 'customers/information', only: [:show, :edit, :update]
     get "customers/information" => "customers#show"
+    get "customers/information/edit" => "customers#edit"
+    get "customers/information" => "customers#update"
     get "customers/confirm_withdraw" => "customers#confirm_withdraw"
     patch "customers/withdraw" => "customers#withdraw"
     # 商品
