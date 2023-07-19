@@ -14,11 +14,11 @@ class Public::OrdersController < ApplicationController
   def index
   end
 
-  # def show
-  # end
+  def show
+  end
   
   def order_params
-     params.require(:order).permit(:name)
+     params.require(:order).permit(:postal_code, :address, :name, :payment_method)
   end
   
 end
