@@ -7,7 +7,8 @@
 	</div>
 
 	<div class="col-xs-5">
-		<%= form_with model: @item do |f| %>
+	  <%#= form_for(@cart_item , url: customers_cart_items_path(item_id: @item), method: :post) do |form| %>
+		<%= form_with model: @cart_item, method: :post do |f| %>
 		<h3><%= @item.name %></h3>
 		<p><%= @item.introduction %></p>
 
@@ -24,7 +25,11 @@
 		</div>
 
 		<div class="col-xs-5">
-		  <p><%= f.submit "カートに入れる", class:"btn btn-primary" %></p>
+		   <% if customer_signed_in? %>
+        <%= f.hidden_field :customer_id, :value => current_customer.id %>
+      <% end %>
+      <%= f.hidden_field :item_id, :value => @item.id %>
+		  <%= f.submit "カートに入れる", class:"btn btn-primary" %>
 		</div>
 		<% end %>
 	</div>
