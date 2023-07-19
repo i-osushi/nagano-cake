@@ -20,7 +20,7 @@ class Admin::ItemsController < ApplicationController
           flash[:notice] = "Book was successfully updated."
           redirect_to admin_items_path(@item)
         else
-          render 'index'
+          render 'new'
         end
     end
     def edit
@@ -43,7 +43,7 @@ class Admin::ItemsController < ApplicationController
         params.require(:item).permit(:genre_id, :name, :introduction, :price, :is_active, :image)
     end
 
-    def set_select_genres
-      @genres = Genre.all.map {|genre| [genre.name, genre.id] }.unshift(["--選択してください--", nil])
-    end
+def set_select_genres
+    @genres = Genre.all.map {|genre| [genre.name, genre.id] }.unshift(["--選択してください--", nil])
+  end
 end
