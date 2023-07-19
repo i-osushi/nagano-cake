@@ -1,21 +1,21 @@
 <!--商品一覧（顧客）-->
-<div class="mb-8">
-  <h2>商品一覧</h2>
-  <p>全<%= @item.count %>件</p>
-</div>
 
-<div class='flex flex-wrap'>
-  <% @item.each do |item| %>
-    <div class="w-full max-w-sm rounded-lg xl:w-4/12 md:w-6/12">
-      <%= link_to item_path(item.id) do %>
-        <%= image_tag item.image, class: "p-5 object-cover" %>
-        <div class="px-5 pb-5">
-          <span class="text-3xl font-semibold tracking-tight text-gray-900 mb-4"><%= item.name %></span>
-          <div class="flex justify-between items-center">
-            <span class="text-3xl font-bold text-gray-900"><%= number_to_currency(product.price, unit: "¥", strip_insignificant_zeros: true) %></span>
-          </div>
-        </div>
-      <% end %>
-    </div>
-  <% end %>
+  <h2 style="margin: 20px 0;">商品一覧(全<%= @items.count %>件)</h2>
+	<div class="col-xs-9 col-xs-offset-1">
+		<div class="product-card-content">
+
+
+		<% @items.each do |item| %>
+		<div class="col-xs-3" style="padding-right: 0px; padding-left: 0px; margin: 10px 0;">
+			<%= link_to item_path(item.id) ,style: "color: black;", data: {"turbolinks" => false} do %>
+				<%= image_tag item.get_image(200, 200), class: "rounded-bottom" %>
+				<p></p><%= item.name %></p>
+			<p>	¥<%= item.price.to_s(:delimited) %></p>
+
+			<% end %>
+		</div>
+		<% end %>
+		</div>
+	</div>
+	<!--<div style="text-align: center;">%= paginate @items %</div>-->
 </div>
