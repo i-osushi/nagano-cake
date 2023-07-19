@@ -43,7 +43,7 @@ class Admin::ItemsController < ApplicationController
         params.require(:item).permit(:genre_id, :name, :introduction, :price, :is_active, :image)
     end
 
-def set_select_genres
+  def set_select_genres
     @genres = Genre.all.map {|genre| [genre.name, genre.id] }.unshift(["--選択してください--", nil])
   end
 end
