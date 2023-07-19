@@ -9,7 +9,7 @@ class Public::AddressesController < ApplicationController
     @address = Address.new(address_params)
      if @address.save
       flash[:notice] = "You have created new address successfully."
-       redirect_to addresses_path(@address.id)
+       redirect_to addresses_path
      else
       @addresses = Address.all
       render 'index'
