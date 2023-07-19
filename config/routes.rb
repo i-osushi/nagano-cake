@@ -29,7 +29,8 @@ Rails.application.routes.draw do
     get '/about' => 'homes#about', as: 'about'
 
     # 会員
-    resources :customers, path: 'customers/information', only: [:show, :edit, :update]
+    # resources :customers, path: 'customers/information', only: [:show, :edit, :update]
+    get "customers/information" => "customers#show"
     get "customers/confirm_withdraw" => "customers#confirm_withdraw"
     patch "customers/withdraw" => "customers#withdraw"
     # 商品

@@ -12,4 +12,7 @@ enum payment_method: { credit_card: 0, transfer: 1}
 # 注文ステータス {0:入金待ち、1:入金確認、2:制作中、3:発送準備中、4:発送済み}
 enum status: {waiting_payment: 0, confirm_payment: 1, producting: 2, waiting_delivery: 3, start_delivery: 4}
 
+# お届け先　｛自分の住所　登録済み住所　新規住所｝
+enum select_address: { own_address: 0, registered_address: 1, new_address: 2}
+
 end

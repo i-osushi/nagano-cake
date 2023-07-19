@@ -1,55 +1,45 @@
 class Public::CartItemsController < ApplicationController
   before_action :authenticate_customer!
-  before_action :set_cart_item, only: %i[increase decrease destroy]
-  
+
   def index
+
     @cart_items = current_customer.cart_items
-  end  
-  
+  end
+
   def create
-    update_or_create(params[:cart_item][:item_id])
+    # @cart_item = current_customer.cart_items.build(cart_item_params)
+     @cart_item = CartItem.new(cart_item_params)
+     @cart_item.customer_id = current_customer.id
+     @cart_item.item_id = params[:item_id]
+    @cart_item.save
     redirect_to cart_items_path
+
   end
-  
+
   def update
-    # 個数を１個増やす
-    @cart_item.increment!(:amount, 1)
-    # 元いた画面へ
-    redirect_to request.referer
+    @cart_item = CartItem.find(params[:id])
+    @cart_item.update(cart_item_params)
+    redirect_to customers_cart_items_path
   end
-  
+
   def destroy
-    destroy_or_destroy_all(@cart_item)
-    redirect_to request.referer
-  end
-  
-  def destroy_all
+    @cart_item = CartItem.find(params[:id])
     @cart_item.destroy
-    redirect_to request.referer
+    flash.now[:alert] = "#{@cart_item.item.name}を削除しました"
+    redirect_to customers_cart_items_path
   end
-  
+
+  def destroy_all
+    @cart_item = current_customer.cart_items
+    @cart_item.destroy_all
+    flash[:alert] = "カートの商品を全て削除しました"
+    redirect_to customers_cart_items_path
+  end
+
   private
 
-  def set_cart_item
-    @cart_item = current_customer.cart_items.find(params[:id])
+  def cart_item_params
+    params.require(:cart_item).permit(:amount, :item_id, :customer_id)
   end
 
-  def update_or_create(item_id)
-    cart_item = current_customer.cart_items.find_by(item_id:)
-    if cart_item
-      cart_item.update!(:amount, 1)
-    else
-      # カート内商品を新たに作成
-      current_customer.cart_items.build(item_id:).save
-    end
-  end
-
-  def destroy_or_destroy_all(cart_item)
-    # 
-    if cart_item.amount > 1
-      cart_item.destroy!(:amount, 1)
-    else
-      cart_item.destroy_all
-    end
-  end
 end
