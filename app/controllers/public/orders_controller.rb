@@ -8,10 +8,28 @@ class Public::OrdersController < ApplicationController
 
   def confirm
     @order = Order.new(order_params)
+    # カートに入っている図べ手の情報を取得する
+    @cart_item = current_customer.cart_item.all
     
+    # 自分の住所を選んだ場合
     if params[:order][:select_address] == "0"
-      
-      
+      @order.postal_code = current_customer.postal_code
+      @order.address = current_customer.address
+      @order.name = current_customer.last_name + current_customer.first_name
+    
+    # 登録済み住所を選んだ場合
+    elsif params[:order][:select_address] == "1"
+      # addresに保存されているデータをfindを利用してcodeに保存する
+      code = Address.find(params[:order][:address_id])
+      @order.postal_code = code.postal_code
+      @order.address = code.address
+      @order.name = code.name
+    
+    # 新規住所を入力した場合
+    elsif params[:order][:select_address] == "2"
+      @order.postal_code = params[:order][:postal_code]
+      @order.address = params[:order][:address]
+      @order.name = params[:order][:name]
     end
 
   end
@@ -24,9 +42,12 @@ class Public::OrdersController < ApplicationController
 
   def show
   end
-  
+
+
+private
+
   def order_params
-     params.require(:order).permit(:postal_code, :address, :last_name, :first_name, :payment_method, :select_address)
+     params.require(:order).permit(:address_id, :select_address, :customer_id, :shipping_cost, :total_payment, :payment_method, :name, :address, :postal_code, :status)
   end
   
 end
