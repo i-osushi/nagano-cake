@@ -13,7 +13,7 @@ class CartItem < ApplicationRecord
   
   def add_tax_price
     tax = 1.1
-    (self.price * tax).round
+    (item.price * tax).round
   end
   
   ## 小計を求めるメソッド
