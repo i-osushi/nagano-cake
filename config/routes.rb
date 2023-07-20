@@ -41,9 +41,9 @@ Rails.application.routes.draw do
     resources :cart_items, only: [:create, :index, :destroy, :update] do
       collection do
         delete :destroy_all
-      end  
+      end
     end
-   
+
     # 注文
     resources :orders, only:[:new, :confirm, :complete, :index, :show]
     # 配送先
