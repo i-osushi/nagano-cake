@@ -30,7 +30,16 @@ class Public::OrdersController < ApplicationController
       @order.postal_code = params[:order][:postal_code]
       @order.address = params[:order][:address]
       @order.name = params[:order][:name]
+    else
+      render "new"
     end
+　　　
+　　# 支払方法選択
+　　if  params[:order][:payment_method] == "0"
+　　  @order.payment_method = params[:order][:payment_method]
+　　else  params[:order][:payment_method] == "1"
+　　  @order.payment_method = params[:order][:payment_method]
+　　end
 
   end
 

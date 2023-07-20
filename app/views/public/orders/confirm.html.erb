@@ -2,6 +2,7 @@
   <div class='row'>
      <h4>注文情報確認</h4>
      <table class="table">
+       <% @cart_item.each do |f| %>
        <thead>
          <tr>
           <th>商品名</th>
@@ -10,11 +11,12 @@
           <th>小計</th>
          </tr>
        </thead>
-       <!--カート機能で受け取った金額を０にする-->
+       <!--カート機能で受け取った金額を0にする-->
        <% total = 0 %>
          <tbody>
           <tr>
-           <td></td>
+           <td><%=image_tag.%></td>
+           <td><%= image_tag user.get_profile_image, size: '50x50' %></td>
            <td></td>
            <td></td>
            <td></td>
