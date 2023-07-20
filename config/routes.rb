@@ -31,14 +31,19 @@ Rails.application.routes.draw do
     # 会員
     # resources :customers, path: 'customers/information', only: [:show, :edit, :update]
     get "customers/information" => "customers#show"
+    get "customers/information/edit" => "customers#edit"
+    get "customers/information" => "customers#update"
     get "customers/confirm_withdraw" => "customers#confirm_withdraw"
     patch "customers/withdraw" => "customers#withdraw"
     # 商品
     resources :items, only: [:index, :show]
     # カート内商品
-    resources :cart_items, only: [:create, :index, :destroy]
-    patch "cart_items/:id" => "cart_items#update"
-    delete "cart_items/destroy_all" => "cart_items#destroy_all"
+    resources :cart_items, only: [:create, :index, :destroy, :update] do
+      collection do
+        delete :destroy_all
+      end  
+    end
+   
     # 注文
     post "/orders/confirm" => "orders#confirm"
     get  "/orders/complete" => "orders#complete"
