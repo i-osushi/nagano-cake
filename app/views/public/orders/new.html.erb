@@ -8,7 +8,7 @@
       
         <h5><strong>支払方法</strong></h5>
          <ul style="list-style: none;">
-           <%= form_with model: @order, url: "/orders/confirm", method: :PATCH, local: true do |f| %>
+           <%= form_with model: @order, url: "/orders/confirm", method: :post, local: true do |f| %>
         
         <li>
           <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
