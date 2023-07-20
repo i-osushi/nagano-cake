@@ -28,8 +28,8 @@
           <%= f.label :select_address_own_address, Order.select_addresses_i18n[:own_address] %><br>
           <ul class="list-style: none;">
            <li>〒<%= current_customer.postal_code %>
-           <%= current_customer.address %><br>
-           <%= current_customer.last_name %><%= current_customer.first_name %>
+                 <%= current_customer.address %><br>
+                 <%= current_customer.last_name %><%= current_customer.first_name %>
            </li>
           </ul>
         </li>

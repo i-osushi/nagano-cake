@@ -63,3 +63,6 @@ gem "enum_help"
 gem 'kaminari'
 
 gem 'pry-rails'
+
+# デバックツール
+gem 'pry-byebug', group: :development
