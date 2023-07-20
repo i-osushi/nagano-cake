@@ -45,9 +45,7 @@ Rails.application.routes.draw do
     end
    
     # 注文
-    post "/orders/confirm" => "orders#confirm"
-    get  "/orders/complete" => "orders#complete"
-    resources :orders, only:[:new, :index, :show, :create]
+    resources :orders, only:[:new, :confirm, :complete, :index, :show]
     # 配送先
     resources :addresses, only:[:index, :edit, :create, :update, :destroy]
   end
