@@ -1,7 +1,7 @@
 <div class='container'>
   <div class='row'>
      <h4>注文情報確認</h4>
-     <table class="table">
+     <table class="col table order_table">
        <% @cart_items.each do |f| %>
        <thead>
          <tr>
@@ -15,18 +15,52 @@
        <% total = 0 %>
          <tbody>
           <tr>
-           <td><%=image_tag.%></td>
-           <td><%= image_tag user.get_profile_image, size: '50x50' %></td>
-           <td></td>
-           <td></td>
-           <td></td>
+           <td><%= attachment_image_tag(f.item, :image, size: "60x50",) %>
+               <%= f.item.name %></td>
+           <td><%= (f.item.price*1.08).to_i %></td>
+           <td><%= f.amount %></td>
+           <td><%= f.subtotal %></td>
           </tr>
          </tbody>
+         <% end %>
        </table>
 
-      <div class="">
-      </div>
+       <table class="col tabre payment_method_table">
+        <tr><th>送料</th><% @order.postage = 800 %><td><%= @order.postage %></td></tr>
+        <tr><th>商品合計</th><td><%= total.to_i %></td></tr>
+        <tr><th>請求合計</th><% @order.total_payment = @order.postage + total.to_i %><td><%= @order_total_payment %></td></tr>
+       </table>
+
+
+  <div class='row'>
+    <div class="col">
+        <h5><strong>支払方法</strong></h5>
+         <ul style="list-style: none;">
+       　　 <li><%= @order.payment_method %>
+     　　   </li>
+         </ul>
+        <h5><strong>お届け先</strong></h5>
+         <ul style="list-style: none;">
+     　　   <li><%= @order.postal_code %>
+     　　   </li>
+     　　   <li><%= @order.address %>
+     　　   </li>
+     　　   <li><%= @order.name %>
+     　　   </li>
+        </ul>
+    </div>
   </div>
+
+<div class="row justify-content-center">
+ <% form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
+   <% hidden_field :customer_id %>
+   <% hidden_field :amout %>
+   <% hidden_field :total_payment %>
+   <% hidden_field :payment_method %>
+   <% hidden_field :name %>
+   <% hidden_field :address %>
+   <% hidden_field :post_code %>
+   <% hidden_field :status %>
+   <%= f.submit "注文を確定する", class: "btn btn-success" %>
+  <% end %>
 </div>
-
-

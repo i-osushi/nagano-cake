@@ -8,9 +8,7 @@ class Public::OrdersController < ApplicationController
 
   def confirm
     @order = Order.new(order_params)
-    # カートに入っている図べ手の情報を取得する
-    @cart_items = current_customer.cart_items.all
-
+    
     # 自分の住所を選んだ場合
     if params[:order][:select_address] == "0"
       @order.postal_code = current_customer.postal_code
@@ -20,7 +18,7 @@ class Public::OrdersController < ApplicationController
     # 登録済み住所を選んだ場合
     elsif params[:order][:select_address] == "1"
       # addresに保存されているデータをfindを利用してcodeに保存する
-      code = Address.find(params[:order][:costomer_id])
+      code = Address.find(params[:order][:customer_id])
       @order.postal_code = code.postal_code
       @order.address = code.address
       @order.name = code.name
@@ -33,13 +31,14 @@ class Public::OrdersController < ApplicationController
     else
       render "index"
     end
-  # 支払方法選択
-    if  params[:order][:payment_method] == "0"
-      @order.payment_method = params[:order][:payment_method]
-    elsif  params[:order][:payment_method] == "1"
-      @order.payment_method = params[:order][:payment_method]
-    end
-
+  
+  # カートに入っているすべての情報を取得する
+    @cart_items = current_customer.cart_items.all
+  end
+  
+  def create
+    @order = Order.new(order_params)
+    @order.save
   end
 
   def complete
@@ -53,9 +52,8 @@ class Public::OrdersController < ApplicationController
 
 
 private
-
   def order_params
-     params.require(:order).permit(:address_id, :select_address, :customer_id, :shipping_cost, :total_payment, :payment_method, :name, :address, :postal_code, :status)
+     params.require(:order).permit(:registered_address, :own_address, :address_id, :select_address, :new_address, :customer_id, :shipping_cost, :total_payment, :payment_method, :name, :address, :postal_code, :status)
   end
 
 end
