@@ -30,5 +30,5 @@ validates :price, presence: true
     tax = 1.1
     (self.price * tax).round
   end
-  
+
 end
