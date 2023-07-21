@@ -2,12 +2,14 @@ class Public::OrdersController < ApplicationController
   # before_action :authenticate_customers!
   def new
     @order = Order.new
+    @customer = current_customer
     @customer = Customer.pluck(:name, :id)
 
   end
 
   def confirm
     @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
     
     # 自分の住所を選んだ場合
     if params[:order][:select_address] == "0"
@@ -18,7 +20,7 @@ class Public::OrdersController < ApplicationController
     # 登録済み住所を選んだ場合
     elsif params[:order][:select_address] == "1"
       # addresに保存されているデータをfindを利用してcodeに保存する
-      code = Address.find(params[:order][:customer_id])
+      code = Address.find(params[:order][:customer_id].to_i)
       @order.postal_code = code.postal_code
       @order.address = code.address
       @order.name = code.name

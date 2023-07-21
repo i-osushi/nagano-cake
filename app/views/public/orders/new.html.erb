@@ -26,7 +26,7 @@
           <!--ラジオボタン　ご自身の住所-->
           <%= f.radio_button :select_address, Order.select_addresses.key(0) %>
           <%= f.label :select_address_own_address, Order.select_addresses_i18n[:own_address] %><br>
-          <ul class="list-style: none;">
+          <ul>
            <li>〒<%= current_customer.postal_code %>
                  <%= current_customer.address %><br>
                  <%= current_customer.last_name %><%= current_customer.first_name %>
@@ -40,7 +40,7 @@
           <%= f.label :select_address_own_address, Order.select_addresses_i18n[:registered_address] %>
            <ul class="list-style: none;">
              <li>
-              　<%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>
+              　<%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display), :include_blank => "選択してください" %>
              </li>
             </ul>
          </li>
