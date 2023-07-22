@@ -51,6 +51,8 @@ Rails.application.routes.draw do
     resources :orders, only:[:new, :index, :show, :create]
     # 配送先
     resources :addresses, only:[:index, :edit, :create, :update, :destroy]
+    # ジャンル検索
+    resources :genres, only:[:show]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

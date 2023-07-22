@@ -1,18 +1,18 @@
 <!--トップ画面-->
 <%= stylesheet_pack_tag "public/homes", :media => "all" %>
 <div class="container">
-  <div class="row pt-3">
-    <div class="col-3">サイドにジャンル検索のせる</div>
+  <div class="row pt-3 col-12">
+    <div class="col-3 mt-3"><%= render "public/genres/search_sidebar", genres: @genres %></div>
 
     <div class="col-9">
 
       <div class="main-visual" style="background-image: url(<%= asset_path('tanuki_cake.jpg') %>);">
-        
+
           <p class="main-visual-text">ようこそ、ながのCAKEへ!<br>
             このサイトは、ケーキ販売のECサイトになります。<br>
             会員でない方も商品の閲覧はできますが、<br>
             購入には会員登録が必要になります。</p>
-        
+
       </div>
 
       <h4 class="mt-4">新着商品</h4>
@@ -20,7 +20,7 @@
         <% @items_latest4.each do |item| %>
           <div class="col-3">
             <%= link_to item_path(item.id) ,style: "color: black;", data: {"turbolinks" => false} do %>
-              <%= image_tag item.get_image(100, 100), class: "rounded-bottom" %>
+              <%= image_tag item.get_image(100, 100), class: "rounded" %>
               <p><%= item.name %></p>
               <p>¥<%= item.price.to_s(:delimited) %></p>
             <% end %>
