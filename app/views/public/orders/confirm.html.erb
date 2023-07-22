@@ -15,6 +15,7 @@
          <tbody>
           <tr>
            <td><%= image_tag f.item.get_image(100, 100) %>
+
                <%= f.item.name %></td>
            <td><%= (f.item.price*1.1).to_i %></td>
            <td><%= f.amount %></td>
@@ -63,4 +64,5 @@
    <%= cart_item.submit "注文を確定する", class: "btn btn-success" %>
   <% end %>
 </div>
+
 </div>
