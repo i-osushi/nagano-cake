@@ -4,12 +4,17 @@
       <a class="navbar-brand" href="/"><%= image_tag('nagano-cake.png') %></a>
         <ul class="navbar-nav ml-auto">
 
+       <div class="login-name mx-auto text-light">
         <% if customer_signed_in? %>
-
-         <li class="text-light text-align:center">
-          Welcome to <%= current_customer.last_name %> さん！
-         </li>
-
+        <p><%= current_customer.last_name %><%= current_customer.first_name %> 様</p>
+　　　　<% elsif admin_signed_in? %>
+　　　　<p>管理者　ログイン中</p>
+　　　　<% end %>
+　　　</div>
+　　　
+　　　　<ul class="nav navbar-nav navbar-right">
+　　　　  <% if customer_signed_in? %>
+　　　　  <!--ユーザーがログインしているとき-->
           <li>
             <%= link_to customers_information_path,class: 'nav-link text-light' do %>
               マイページ
@@ -38,8 +43,36 @@
             <%= text_field :search, placeholder: "ジャンル検索" %></div>
           
 
-        <% else %>
-
+          <% elsif admin_signed_in? %>
+          <!--管理車がログインしているとき-->
+          <li>
+            <%= link_to admin_items_path, class: 'nav-link text-light' do %>
+              商品一覧
+            <% end %>
+          </li>
+          <li>
+            <%=  link_to admin_customers_path, class: 'nav-link text-light' do %>
+              会員一覧
+            <% end %>
+          </li>
+          <li>
+            <%=  link_to admin_homes_path , class: 'nav-link text-light' do %>
+              注文履歴一覧
+            <% end %>
+          </li>
+          <li>
+            <%=  link_to admin_genres_path , class: 'nav-link text-light' do %>
+              ジャンル一覧
+            <% end %>
+          </li>
+          <li>
+            <%=  link_to destroy_admin_session_path , class: 'nav-link text-light', method: :delete do %>
+              ログアウト
+            <% end %>
+          </li>
+          
+          <% else %>
+　　　　　<!--誰もログインしていないとき-->
           <li>
             <%= link_to about_path,class: 'nav-link text-light' do %>
                About
@@ -61,6 +94,7 @@
                ログイン
             <% end %>
           </li>
+          
         <% end %>
         </ul>
       </div>

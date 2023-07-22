@@ -5,6 +5,7 @@ class Public::HomesController < ApplicationController
     # @items = Item.order('id DESC').limit(4)
     @items = Item.all
     @items_latest4 = @items.first(4)
+    @genres = Genre.all
   end
   
   def about
