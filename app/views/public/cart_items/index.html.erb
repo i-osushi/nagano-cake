@@ -19,7 +19,7 @@
         <tbody>
           <% @cart_items.each do |cart_item| %>
           <tr>
-            <td class="col-xs-3"><%= cart_item.item.name %></td>
+            <td class="col-xs-3"><%= image_tag cart_item.item.get_image(100, 100) %><%= cart_item.item.name %></td>
             <td class="col-xs-2">¥<%= cart_item.item.add_tax_price.to_s(:delimited) %></td>
             <td class="col-xs-1">
                 <%#= form_with model: @cart_item do |f| %>
@@ -43,16 +43,17 @@
       </table>
 
       <table class="table table-hover table-bordered col-xs-10" >
-        <thead>
-          <tr class="info">
-            <th class="col-xs-3">合計金額</th>
-          </tr>
-        </thead>
-        <tbody>
+        <!--<thead>-->
           <tr>
+            <th class="col-xs-1">合計金額</th>
             <td class="col-xs-3">¥<%= @total %></td>
           </tr>
-        </tbody>
+        <!--</thead>-->
+        <!--<tbody>-->
+          <!--<tr>-->
+            
+          <!--</tr>-->
+        <!--</tbody>-->
       </table>
 
     <div class="col-xs-8">
