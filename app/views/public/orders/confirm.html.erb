@@ -26,9 +26,9 @@
        </table>
 
        <table class="col tabre payment_method_table">
-        <tr><th>送料</th><% @order.postage = 800 %><td><%= @order.postage %></td></tr>
+        <tr><th>送料</th><% @order.shipping_cost = 800 %><td><%= @order.shipping_cost %></td></tr>
         <tr><th>商品合計</th><td><%= total.to_i %></td></tr>
-        <tr><th>請求合計</th><% @order.total_payment = @order.postage + total.to_i %><td><%= @order_total_payment %></td></tr>
+        <tr><th>請求合計</th><% @order.total_payment = @order.shipping_cost + total.to_i %><td><%= @order_total_payment %></td></tr>
        </table>
 
 
@@ -52,15 +52,15 @@
   </div>
 
 <div class="row justify-content-center">
- <% form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
-   <% hidden_field :customer_id %>
-   <% hidden_field :amout %>
-   <% hidden_field :total_payment %>
-   <% hidden_field :payment_method %>
-   <% hidden_field :name %>
-   <% hidden_field :address %>
-   <% hidden_field :post_code %>
-   <% hidden_field :status %>
+ <% form_with model: @order, local: true do |f| %>
+   <%= hidden_field :customer_id %>
+   <%= hidden_field :amout %>
+   <%= hidden_field :total_payment %>
+   <%= hidden_field :payment_method %>
+   <%= hidden_field :name %>
+   <%= hidden_field :address %>
+   <%= hidden_field :post_code %>
+   <%= hidden_field :status %>
    <%= f.submit "注文を確定する", class: "btn btn-success" %>
   <% end %>
 </div>
