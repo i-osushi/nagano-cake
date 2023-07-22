@@ -3,7 +3,7 @@ class Public::CartItemsController < ApplicationController
 
   def index
     # @cart_item = CartItem.new
-    @cart_items = CartItem.all
+    @cart_items =  current_customer.cart_items.all
     @cart_item = current_customer
     @total = @cart_items.inject(0) { |sum, cart_item| sum + cart_item.subtotal }
   end
@@ -16,11 +16,11 @@ class Public::CartItemsController < ApplicationController
       cart_item.save
       redirect_to cart_items_path
     elsif @cart_item.save
-      @cart_items = current_customer.cart_items.all
-      render 'index'
+      # @cart_items = current_customer.cart_items.all
+      redirect_to cart_items_path
     end
   end
-  
+
 
   def update
     @cart_item = CartItem.find(params[:id])
