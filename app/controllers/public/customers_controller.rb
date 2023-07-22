@@ -23,14 +23,13 @@ class Public::CustomersController < ApplicationController
   
   # 顧客の退会処理(ステータスの更新)
   def withdraw
-    # @customer = Customer.find(current_customer.id)
-      # is_deletedカラムをtrueに変更することにより削除フラグを立てる
-    # @customer.update(is_deleted: true)
-    # reset_session
-    # flash[:notice] = "退会処理を実行いたしました"
-    # redirect_to root_path
-  end 
-  
+    @customer = current_customer
+    # is_deletedカラムをtrueに変更することにより削除フラグを立てる
+    @customer.update(is_deleted: true)
+    reset_session
+    redirect_to root_path
+  end
+
    private
 
   def customer_params
