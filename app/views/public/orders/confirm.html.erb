@@ -1,6 +1,6 @@
-<div class='container'>
+<div class='container m-5'>
+ <h4>注文情報確認</h4>
   <div class='row'>
-     <h4>注文情報確認</h4>
      <table class="col table order_table">
        <% @cart_items.each do |f| %>
        <thead>
@@ -11,13 +11,12 @@
           <th>小計</th>
          </tr>
        </thead>
-       <!--カート機能で受け取った金額を0にする-->
-       <% total = 0 %>
+       <% @total = ( f.item.price* f.amount)*1.1%>
          <tbody>
           <tr>
            <td><%= attachment_image_tag(f.item, :image, size: "60x50",) %>
                <%= f.item.name %></td>
-           <td><%= (f.item.price*1.08).to_i %></td>
+           <td><%= (f.item.price*1.1).to_i %></td>
            <td><%= f.amount %></td>
            <td><%= f.subtotal %></td>
           </tr>
@@ -25,42 +24,43 @@
          <% end %>
        </table>
 
-       <table class="col tabre payment_method_table">
+       <table class="col-4 tabre payment_method_table table-bordered border-dark ">
         <tr><th>送料</th><% @order.shipping_cost = 800 %><td><%= @order.shipping_cost %></td></tr>
-        <tr><th>商品合計</th><td><%= total.to_i %></td></tr>
-        <tr><th>請求合計</th><% @order.total_payment = @order.shipping_cost + total.to_i %><td><%= @order_total_payment %></td></tr>
+        <tr><th>商品合計</th><td><%= @total.to_i %></td></tr>
+        <tr><th>請求合計</th><% @order.total_payment = @order.shipping_cost + @total.to_i %><td><%= @order.total_payment %></td></tr>
        </table>
 
-
+<div class='container m-5'>
   <div class='row'>
-    <div class="col">
-        <h5><strong>支払方法</strong></h5>
+   <div class="col">
+      <h5><strong>支払方法</strong></h5>
          <ul style="list-style: none;">
-       　　 <li><%= @order.payment_method %>
-     　　   </li>
+          <li><%= Order.payment_methods_i18n[@order.payment_method] %>
+     　　 </li>
          </ul>
-        <h5><strong>お届け先</strong></h5>
+        </div>
+      </div>
+  <div class='row'>
+      <h5><strong>お届け先</strong></h5>
          <ul style="list-style: none;">
-     　　   <li><%= @order.postal_code %>
-     　　   </li>
-     　　   <li><%= @order.address %>
-     　　   </li>
-     　　   <li><%= @order.name %>
+     　　   <li>〒<%= @order.postal_code %><%= @order.address %><br><%= @order.name %>
      　　   </li>
         </ul>
     </div>
   </div>
+</div>
 
 <div class="row justify-content-center">
- <% form_with model: @order, local: true do |f| %>
-   <%= hidden_field :customer_id %>
-   <%= hidden_field :amout %>
-   <%= hidden_field :total_payment %>
-   <%= hidden_field :payment_method %>
-   <%= hidden_field :name %>
-   <%= hidden_field :address %>
-   <%= hidden_field :post_code %>
-   <%= hidden_field :status %>
-   <%= f.submit "注文を確定する", class: "btn btn-success" %>
+ <% form_with model: @order, local: true do |cart_item| %>
+   <%= cart_item.hidden_field :customer_id %>
+   <%= cart_item.hidden_field :amout %>
+   <%= cart_item.hidden_field :total_payment %>
+   <%= cart_item.hidden_field :payment_method %>
+   <%= cart_item.hidden_field :name %>
+   <%= cart_item.hidden_field :address %>
+   <%= cart_item.hidden_field :post_code %>
+   <%= cart_item.hidden_field :status %>
+   <%= cart_item.submit "注文を確定する", class: "btn btn-success" %>
   <% end %>
+</div>
 </div>
