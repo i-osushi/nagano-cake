@@ -14,7 +14,7 @@
        <% @total = ( f.item.price* f.amount)*1.1%>
          <tbody>
           <tr>
-           <td><%= attachment_image_tag(f.item, :image, size: "60x50",) %>
+           <td><%= image_tag f.item.get_image(100, 100) %>
                <%= f.item.name %></td>
            <td><%= (f.item.price*1.1).to_i %></td>
            <td><%= f.amount %></td>
