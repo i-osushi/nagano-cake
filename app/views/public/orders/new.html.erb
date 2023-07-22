@@ -40,7 +40,7 @@
           <%= f.label :select_address_own_address, Order.select_addresses_i18n[:registered_address] %>
            <ul class="list-style: none;">
              <li>
-              　<%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display), :include_blank => "選択してください" %>
+              　<%= f.select :address_id, options_from_collection_for_select(current_customer.addresses.all, :id, :address_display), :include_blank => "選択してください" %>
              </li>
             </ul>
          </li>
