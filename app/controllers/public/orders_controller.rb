@@ -1,6 +1,6 @@
 class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!
-  
+
   def new
     @order = Order.new
     @customer = current_customer
@@ -11,7 +11,7 @@ class Public::OrdersController < ApplicationController
   def confirm
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
-    
+
     # 自分の住所を選んだ場合
     if params[:order][:select_address] == "own_address"
       @order.postal_code = current_customer.postal_code
@@ -34,20 +34,21 @@ class Public::OrdersController < ApplicationController
     else
       render "index"
     end
-  
+
   # カートに入っているすべての情報を取得する
     @cart_items = current_customer.cart_items.all
+    @total = 0
   end
-  
+
   def create
     @order = Order.new(order_params)
     @order.save
     redirect_to orders_complete_path
-    
-    if params[:order][:select_address] == "2"
+
+    if params[:order][:select_address] == "new_address"
       current_customer.address.create(address_params)
     end
-    
+
     @cart_items.destroy_all
   end
 
@@ -55,6 +56,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+  @orders = current_customer.orders.all
   end
 
   def show
@@ -63,7 +65,7 @@ class Public::OrdersController < ApplicationController
 
 private
   def order_params
-     params.require(:order).permit(:address_id, :registered_address, :own_address, :select_address, :new_address, :customer_id, :shipping_cost, :total_payment, :payment_method, :name, :address, :postal_code, :status)
+     params.require(:order).permit(:registered_address, :own_address, :select_address, :new_address, :customer_id, :shipping_cost, :total_payment, :payment_method, :name, :address, :postal_code, :status)
   end
 
 end
