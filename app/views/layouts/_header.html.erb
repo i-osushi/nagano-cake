@@ -11,7 +11,7 @@
 　　　　<p>管理者　ログイン中</p>
 　　　　<% end %>
 　　　</div>
-　　　
+
 　　　　<ul class="nav navbar-nav navbar-right">
 　　　　  <% if customer_signed_in? %>
 　　　　  <!--ユーザーがログインしているとき-->
@@ -38,10 +38,10 @@
                ログアウト
             <% end %>
           </li>
-          
+
           <div class="row-1">
             <%= text_field :search, placeholder: "ジャンル検索" %></div>
-          
+
 
           <% elsif admin_signed_in? %>
           <!--管理車がログインしているとき-->
@@ -70,7 +70,7 @@
               ログアウト
             <% end %>
           </li>
-          
+
           <% else %>
 　　　　　<!--誰もログインしていないとき-->
           <li>
@@ -94,7 +94,7 @@
                ログイン
             <% end %>
           </li>
-          
+
         <% end %>
         </ul>
       </div>
