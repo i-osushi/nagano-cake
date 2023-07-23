@@ -26,11 +26,10 @@ validates :price, presence: true
     end
     image.variant(resize_to_limit: [height, width]).processed
   end
-
+  
   def add_tax_price
     tax = 1.1
     (self.price * tax).round
   end
-
 
 end

@@ -1,18 +1,18 @@
 <!--ジャンル検索結果表示-->
 <div class="container">
-  <div class="row pt-3 col-12">
+  <div class="row pt-5">
      <!-- ジャンル選択のサイドバー -->
     <div class="col-3 mt-3">
       <%= render "search_sidebar", genres: @genres %>
     </div>
-    <!-- ジャンル選択のサイドバー -->
-    <div class="col-9">
-      <h3><%= @genre.name %>一覧(全<%= @items.count %>件)</h3>
+    <!-- ジャンル検索結果 -->
+    <div class="col-9 pt-4">
+      <h3><%= @genre.name %>一覧(全<%= @genre.items.count %>件)</h3>
         <div class="row">
             <% @genre.items.each do |item| %>
               <div class="col-3">
-                  <%= link_to item_path(item) do %>
-                    <%= image_tag item.get_image(100, 100), class: "rounded" %><br>
+                  <%= link_to item_path(item) ,style: "color: black;" do %>
+                    <%= image_tag item.image, class: "rounded", size:"200x150", style: "object-fit: cover;" %><br>
                     <%= item.name %><br>
                     ￥<%= item.price %>
                   <% end %>

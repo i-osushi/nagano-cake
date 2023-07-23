@@ -1,34 +1,31 @@
 <!--トップ画面-->
 <%= stylesheet_pack_tag "public/homes", :media => "all" %>
 <div class="container">
-  <div class="row pt-3 col-12">
+  <div class="row pt-3">
+    <!--ジャンル検索サイドバー-->
     <div class="col-3 mt-3"><%= render "public/genres/search_sidebar", genres: @genres %></div>
-
+    <!--メインビジュアル-->
     <div class="col-9">
-
       <div class="main-visual" style="background-image: url(<%= asset_path('tanuki_cake.jpg') %>);">
-
           <p class="main-visual-text">ようこそ、ながのCAKEへ!<br>
             このサイトは、ケーキ販売のECサイトになります。<br>
             会員でない方も商品の閲覧はできますが、<br>
             購入には会員登録が必要になります。</p>
-
       </div>
-
-      <h4 class="mt-4">新着商品</h4>
+      <!--新着商品-->
+      <h4 class="mt-4 font-weight-bold">新着商品</h4>
         <div class="row">
-        <% @items_latest4.each do |item| %>
-          <div class="col-3">
-            <%= link_to item_path(item.id) ,style: "color: black;", data: {"turbolinks" => false} do %>
-              <%= image_tag item.get_image(100, 100), class: "rounded" %>
-              <p><%= item.name %></p>
-              <p>¥<%= item.price.to_s(:delimited) %></p>
-            <% end %>
-          </div>
-        <% end %>
+          <% @items_latest4.each do |item| %>
+            <div class="col-3">
+              <%= link_to item_path(item.id) ,style: "color: black;", data: {"turbolinks" => false} do %>
+                <%= image_tag item.image, class: "rounded mr-1", size:"200x150", style: "object-fit: cover;" %>
+                <p class="font-weight-bold"><%= item.name %></p>
+                <p class="font-weight-bold">¥<%= item.price.to_s(:delimited) %></p>
+              <% end %>
+            </div>
+          <% end %>
         </div>
-
-      <div class="text-right"><%= link_to "全ての商品を見る", items_path %></div>
+      <div class="text-right font-weight-bold mt-2"><%= link_to "全ての商品を見る", items_path %></div>
     </div>
   </div>
 </div>

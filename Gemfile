@@ -66,3 +66,5 @@ gem 'pry-rails'
 
 # デバックツール
 gem 'pry-byebug', group: :development
+
+gem 'seed-fu'
