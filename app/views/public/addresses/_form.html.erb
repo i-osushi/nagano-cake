@@ -23,7 +23,8 @@
       </div>
       <div class="col-3">
         <%= f.text_field :name, class: 'form-control ', placeholder: "令和道子" %>
-
+        </div>
+      <div class="col-6">
         <% if f.object.new_record? %>
           <%= f.submit "新規登録", class: "btn btn-sm btn-success float-end" %>
            <% else %>

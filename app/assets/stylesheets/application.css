@@ -14,6 +14,9 @@
  *= require_self
  */
  
+header, h1, h2, h3, h4, h5, nav, li, table,  .list-comment {
+  font-family: 'Zen Kurenaido', sans-serif;
+}
 
 * {
   margin: 0;
