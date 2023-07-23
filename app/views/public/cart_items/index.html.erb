@@ -1,72 +1,70 @@
 <!--カート内商品一覧画面-->
-<div class="row">
-  <div class="col-xs-12">
-    <div>
-      <strong class="information-link"><h3>ショッピングカート</h3></strong>
-      <%= link_to "カートを空にする", destroy_all_cart_items_path, method: :DELETE, class: "pull-right btn btn-danger" %>
+<div class="container">
+  <div class="row col-12">
+    <div class="row mt-5 mb-3">
+      <h3>ショッピングカート</h3>
+      <div classs="text-right">
+      <!--<span>-->
+        <%= link_to "カートを空にする", destroy_all_cart_items_path, method: :DELETE, class: "btn btn-danger" %>
+      <!--<span>  -->
+      </div>
     </div>
-
-      <table class="table table-hover table-bordered col-xs-10" >
-        <thead>
-          <tr class="info">
-            <th class="col-xs-3">商品名</th>
-            <th class="col-xs-2">単価（税込）</th>
-            <th class="col-xs-1">数量</th>
-            <th class="col-xs-1">小計</th>
-            <th class="col-xs-1"></th>
+      <!--カート内商品テーブル-->
+      <table class="table table-hover table-bordered col-12" >
+        <thead class="table-active">
+          <tr>
+            <th class="col-4">商品名</th>
+            <th class="col-2">単価（税込）</th>
+            <th class="col-2">数量</th>
+            <th class="col-2">小計</th>
+            <th class="col-2"></th>
           </tr>
         </thead>
         <tbody>
           <% @cart_items.each do |cart_item| %>
           <tr>
-            <td class="col-xs-3"><%= image_tag cart_item.item.get_image(100, 100) %><%= cart_item.item.name %></td>
-            <td class="col-xs-2">¥<%= cart_item.item.add_tax_price.to_s(:delimited) %></td>
-            <td class="col-xs-1">
-                <%#= form_with model: @cart_item do |f| %>
-                <%= form_with(model: cart_item, url: cart_item_path(cart_item)) do |f| %>
-                  <p>
-                    <%= f.number_field :amount, min:1, max:100 %>
-                    <%= f.submit "変更", class: "btn btn-primary" %>
-                  </p>
-                <% end %>
+            <td><%= image_tag cart_item.item.get_image(100, 100) %><%= cart_item.item.name %></td>
+            <td>¥<%= cart_item.item.add_tax_price.to_s(:delimited) %></td>
+            <td>
+              <%= form_with(model: cart_item, url: cart_item_path(cart_item)) do |f| %>
+                <p>
+                  <%= f.number_field :amount, min:1, max:100 %>
+                  <%= f.submit "変更", class: "btn btn-primary" %>
+                </p>
+              <% end %>
             </td>
-            <td class="col-xs-1">
-                ¥<%#= ((cart_item.item.add_tax_price * cart_item.amount * 1.1).floor).to_s(:delimited, delimiter: ',') %>
-                <%= cart_item.subtotal.to_s(:delimited) %>
+            <td>
+              ¥<%= cart_item.subtotal.to_s(:delimited) %>
             </td>
-            <td class="col-xs-1">
-                <%= link_to "削除する", cart_item_path(cart_item), method: :DELETE, class: "btn btn-danger" %>
+            <td>
+              <%= link_to "削除する", cart_item_path(cart_item), method: :DELETE, class: "btn btn-danger" %>
             </td>
           </tr>
           <% end %>
         </tbody>
       </table>
+      <!--買い物を続けるボタンと合計金額テーブル-->
+      <div class="col-3 mt-3">
+        <span>
+          <%= link_to "買い物を続ける", root_path, class: "btn btn-primary", data: {"turbolinks" => false} %>
+        </span>
+      </div>
 
-      <table class="table table-hover table-bordered col-xs-10" >
-        <!--<thead>-->
+      <div class="col-5"></div>
+      <table class="table table-hover table-bordered col-4 mt-3" >
           <tr>
-            <th class="col-xs-1">合計金額</th>
-            <td class="col-xs-3">¥<%= @total %></td>
+            <th class="col-2 table-active">合計金額</th>
+            <td class="col-2">¥<%= @total %></td>
           </tr>
-        <!--</thead>-->
-        <!--<tbody>-->
-          <!--<tr>-->
-            
-          <!--</tr>-->
-        <!--</tbody>-->
       </table>
-
-    <div class="col-xs-8">
+      
+ 
+    <div class="col-12 text-center mt-3">
       <span>
-        <%= link_to "買い物を続ける", root_path, class: "btn btn-primary", data: {"turbolinks" => false} %>
+        <%= link_to "情報入力に進む", new_order_path, class: "col-3 btn btn-success"%>
       </span>
     </div>
-
-    <div class="col-xs-8">
-      <span>
-        <%= link_to "情報入力に進む", new_order_path, class: "col-xs-12 btn btn-success"%>
-      </span>
-    </div>
+    
   </div>
 </div>
 
