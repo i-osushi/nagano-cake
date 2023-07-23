@@ -1,10 +1,13 @@
 <div class="container mt-5 pb-5">
-  <div class="form-group text-center">
-    <h2 class="mb-3 ml-5">商品詳細</h2>
+  <div class="form-group">
+    <h2 class="mb-3 ml-5 text-center">商品詳細</h2>
+    <div class="row mt-5 mb-5">
+      <div class="col-lg-5">
+       <%= image_tag @item.get_image(400,350), class: "rounded-bottom" %>
+      </div>
 
-      <%= image_tag @item.get_image(300,300), class: "rounded-bottom" %>
-
-      <table class="table col-md-10 text-center">
+      <div class="col-lg-7 ">
+      <table class="table mx-auto">
         <tbody>
           <tr>
             <td>商品名</td>
@@ -38,8 +41,11 @@
            </tr>
         </tbody>
        </table>
-
-       <%= link_to "編集する", edit_admin_item_path, class: "btn btn-base mt-3 ml-5 px-4 py-2" %>
+      </div>
+      </div>
+      <div class="text-center">
+       <%= link_to "編集する", edit_admin_item_path, class: "btn btn-success mt-3 ml-5 px-4 py-2" %>
+      </div>
     </div>
   </div>
 </div>
