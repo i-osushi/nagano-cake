@@ -7,11 +7,14 @@
 	  <h2 >商品一覧(全<%= @items.count %>件)</h2>
 	    <div class="row">
 		  <% @items.each do |item| %>
-		  <div class="col-xs-3">
+		  <div class="col-3">
 			<%= link_to item_path(item.id) ,style: "color: black;", data: {"turbolinks" => false} do %>
+			<div class="mt-1 mr-4">
 			  <%= image_tag item.get_image(200, 200), class: "rounded" %>
 			  <p><%= item.name %></p>
-			  <p>¥<%= item.price.to_s(:delimited) %></p>
+			  <p>¥<%= item.add_tax_price.to_s(:delimited) %></p>
+			  <!--<p>¥<%#= item.price.to_s(:delimited) %></p>-->
+			</div>
 			<% end %>
 		  </div>
 		  <% end %>

@@ -1,3 +1,23 @@
 // Place all the styles related to the public/genres controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.genre-table {
+  border: 2px solid #333;
+  width: 90%;
+  height: 25%;
+}
+
+.genre-table-title1 {
+  border: 2px solid #333;
+}
+
+.genre-table-title2,.genre-table-item {
+  padding: 15px;/* 余白指定 */
+}
