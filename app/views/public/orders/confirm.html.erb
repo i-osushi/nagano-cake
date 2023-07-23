@@ -1,9 +1,8 @@
 <div class='container m-5'>
  <h4>注文情報確認</h4>
   <div class='row'>
-     <table class="col table order_table">
-       <% @cart_items.each do |f| %>
-       <thead>
+     <table class="col m-2 table order_table table-bordered">
+       <thead class="table-danger">
          <tr>
           <th>商品名</th>
           <th>単価(税込)</th>
@@ -11,6 +10,7 @@
           <th>小計</th>
          </tr>
        </thead>
+       <% @cart_items.each do |f| %>
        <% @total = ( f.item.price* f.amount)*1.1%>
          <tbody>
           <tr>
@@ -24,10 +24,12 @@
          <% end %>
        </table>
 
-       <table class="col-4 tabre payment_method_table table-bordered border-dark ">
-        <tr><th>送料</th><% @order.shipping_cost = 800 %><td><%= @order.shipping_cost %>円</td></tr>
-        <tr><th>商品合計</th><td><%= @total.to_i %>円</td></tr>
-        <tr><th>請求合計</th><% @order.total_payment = @order.shipping_cost + @total.to_i %><td><%= @order.total_payment %>円</td></tr>
+       <table class="col-4 m-2 tabre payment_method_table table-bordered border-dark ">
+        <thead>
+          <tr><th class="table-danger">送料</th><% @order.shipping_cost = 800 %><td><%= @order.shipping_cost %>円</td></tr>
+          <tr><th class="table-danger">商品合計</th><td><%= @total.to_i %>円</td></tr>
+          <tr><th class="table-danger">請求合計</th><% @order.total_payment = @order.shipping_cost + @total.to_i %><td><%= @order.total_payment %>円</td></tr>
+        </thead>
        </table>
 
 <div class='container m-5'>
