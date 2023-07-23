@@ -1,20 +1,25 @@
-<div class="container mt-5 pb-5">
-  <div class="col-md-12">
-    <h4 class="mb-3 ml-5">注文履歴詳細</span></h4>
+<div class="pcontainer mt-5 pb-5">
+  <div class="mb-4 ml-4">
+    <h4 class="mb-3 ml-5">注文履歴詳細</h4>
+  <div>
+</div>
+  
+  <div class="row">
+  <div class="col-4 offset-1">
 
-    <table>
+    <table class="table">
       <tr>
         <th>購入者</th>
         <td><%= @order.customer.last_name %><%= @order.customer.first_name %></td>
       </tr>
       <tr>
         <th>注文日</th>
-        <td><%= @order.created_at %></td>
+        <td><%= @order.created_at.in_time_zone('Asia/Tokyo').strftime('%Y/%m/%d %H:%M:%S')  %></td>
       </tr>
       <tr>
         <th>配送先</th>
-        〒<td><%= @order.postal_code %><%= @order.address %></td>
-        　<td><%= @order.address_name %></td>
+          <td>〒<%= @order.postal_code %>　<%= @order.address %><br>
+        　<%= @order.name %></td>
       </tr>
       <tr>
         <th>支払方法</th>
@@ -23,9 +28,9 @@
      <tr>
        <th>注文ステータス</th>
       <td>
-        <%= form_with model:@order, url: admin_order_path do |f| %>
+        <%= form_with model: @order, url: admin_order_path do |f| %>
         <%= f.select :status, Order.statuses_i18n.invert %>
-        <%= f.submit "更新", class: "btn btn-success" %>
+        <%= f.submit "更新", class: "btn btn-success ml-3" %>
         <% end %>
       </td>
      </tr>
@@ -33,8 +38,10 @@
   </div>
  </div>
 
- <table>
-   <thead>
+ <div class="row">
+  <div class="col-8 offset-1">
+   <table class="table table-bordered table-background">
+      <thead class="thead-light">
      <tr>
        <th>商品名</th>
         <th>単価（税込）</th>
@@ -43,26 +50,28 @@
         <th>製作ステータス</th>
      </tr>
    </thead>
+   
    <tbody>
      <% @order.order_details.each do |item| %>
     <tr>
       <td><%= item.item.name %></td>
       <td><%= item.price.to_s(:delimited) %></td>
       <td><%= item.amount %></td>
-      <td><%= item.subtotal %></td>
+      <td><%= item.price %></td>
       <td>
-      <td>
-          <%= form_with model:@order, url: admin_order_path do |f| %>
-          <%= f.select :status, Order.statuses_i18n.invert %>
-          <%= f.submit "更新", class: "btn btn-success" %>
+          <%= form_with model: item, url: admin_order_path do |f| %>
+          <%= f.select :making_status, OrderDetail.making_statuses_i18n.invert %>
+          <%= f.submit "更新", class: "btn btn-success ml-5" %>
           <% end %>
       </td>
     </tr>
      <% end %>
   </tbody>
   </table>
+</div>
 
-  <table>
+  <div class="col-2 d-flex align-items-end ml-3 table-background">
+   <table class="table table-bordered">
     <tr>
      <th>商品合計</th>
      <td><%= @order.total_payment %></td>
@@ -73,8 +82,8 @@
     </tr>
     <tr>
       <th>請求金額</th>
-      <td><%= @order.payment + @order.shipping_cost %></td>
+      <td><%= @order.total_payment + @order.shipping_cost %></td>
     </tr>
-  </table>
+   </table>
   </div>
   </div>
