@@ -1,6 +1,6 @@
 <!--ジャンル検索結果表示-->
 <div class="container">
-  <div class="row pt-5 col-12">
+  <div class="row pt-5">
      <!-- ジャンル選択のサイドバー -->
     <div class="col-3 mt-3">
       <%= render "search_sidebar", genres: @genres %>
@@ -12,7 +12,7 @@
             <% @genre.items.each do |item| %>
               <div class="col-3">
                   <%= link_to item_path(item) ,style: "color: black;" do %>
-                    <%= image_tag item.get_image(200, 300), class: "rounded", style: "object-fit: cover;" %><br>
+                    <%= image_tag item.image, class: "rounded", size:"200x150", style: "object-fit: cover;" %><br>
                     <%= item.name %><br>
                     ￥<%= item.price %>
                   <% end %>

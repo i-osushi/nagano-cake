@@ -1,16 +1,16 @@
 <!--商品一覧（顧客）-->
 <div class="container">
-  <div class="row pt-3 col-12">
+  <div class="row pt-5">
     <div class="col-3 mt-3"><%= render "public/genres/search_sidebar", genres: @genres %></div>
   
-	<div class="col-9">
-	  <h2 >商品一覧(全<%= @items.count %>件)</h2>
+	<div class="col-9 pt-3">
+	  <h2 class="font-weight-bold">商品一覧(全<%= @items.count %>件)</h2>
 	    <div class="row">
 		  <% @items.each do |item| %>
 		  <div class="col-3">
 			<%= link_to item_path(item.id) ,style: "color: black;", data: {"turbolinks" => false} do %>
 			<div class="mt-1 mr-4">
-			  <%= image_tag item.get_image(200, 200), class: "rounded" %>
+			  <%= image_tag item.image, class: "rounded", size:"200x150", style: "object-fit: cover;" %>
 			  <p><%= item.name %></p>
 			  <p>¥<%= item.add_tax_price.to_s(:delimited) %></p>
 			  <!--<p>¥<%#= item.price.to_s(:delimited) %></p>-->
