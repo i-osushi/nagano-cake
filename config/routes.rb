@@ -51,7 +51,7 @@ Rails.application.routes.draw do
     resources :orders, only:[:new, :index, :show, :create]
     # 配送先
     resources :addresses, only:[:index, :edit, :create, :update, :destroy]
-    
+
     # ジャンル検索（顧客）
     resources :genres, only:[:show]
 
