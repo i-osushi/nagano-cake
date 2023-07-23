@@ -1,6 +1,6 @@
 <div class="pcontainer mt-5 pb-5">
-  <div class="mb-4 ml-4">
-    <h4 class="mb-3 ml-5">注文履歴詳細</h4>
+  <div class="text-center">
+    <h4>注文履歴詳細</h4>
   <div>
 </div>
   
@@ -59,7 +59,7 @@
       <td><%= item.amount %></td>
       <td><%= item.price %></td>
       <td>
-          <%= form_with model: item, url: admin_order_path do |f| %>
+          <%= form_with model: item, url: admin_order_detail_path(item.id) do |f| %>
           <%= f.select :making_status, OrderDetail.making_statuses_i18n.invert %>
           <%= f.submit "更新", class: "btn btn-success ml-5" %>
           <% end %>
