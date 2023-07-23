@@ -17,7 +17,7 @@ validates :last_name_kana, presence: true
 validates :first_name_kana, presence: true
 validates :postal_code, presence: true
 validates :address, presence: true
-varidates :telephone_number, presence: true
-varidates :email, presence: 
+validates :telephone_number, presence: true
+validates :email, presence: true
 
 end
