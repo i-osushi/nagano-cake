@@ -1,18 +1,16 @@
-<!--商品詳細(顧客）-->
+<!--商品詳細画面(顧客）-->
 <div class="container">
-<div class="row pt-3 col-12">
-
+  <div class="row pt-3 col-12">
+    <!--ジャンル検索サイドバー-->
 	<div class="col-3 mt-3"><%= render "public/genres/search_sidebar", genres: @genres %></div>
+	<!--商品詳細-->
 	<div class="col-9">
 		<p class="item-content1"><%= image_tag @item.get_image(300, 300), class: "rounded-bottom" %></p>
 	</div>
-
 	<div class="col-xs-5">
-	  <%#= form_for(@cart_item , url: customers_cart_items_path(item_id: @item), method: :post) do |form| %>
 		<%= form_with model: @cart_item, method: :post do |f| %>
 		<h3><%= @item.name %></h3>
 		<p><%= @item.introduction %></p>
-
 	</div>
 </div>
 
@@ -33,5 +31,5 @@
 		  <%= f.submit "カートに入れる", class:"btn btn-primary" %>
 		</div>
 		<% end %>
-	</div>
+  </div>
 </div
