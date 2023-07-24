@@ -16,15 +16,18 @@
 			<p>¥<%= @item.add_tax_price.to_s(:delimited) %> (税込)</p>
 		</div>
 			
-		  <div class="row pt-4">
+            <!--販売ステータス・カート追加-->
 		  	<% if @item.is_active == true %>
-		      <%= f.select :amount, *[1..10], {:prompt => "個数選択"}, class:"ml-3" %></p>
-              <%= f.hidden_field :item_id, :value => @item.id %>
-		      <%= f.submit "カートに入れる", class:"btn btn-success ml-4" %>
+		  	  <p class="text-success"><strong>販売中</strong></p>
+		      <div class="row pt-2">
+		      	<%= f.select :amount, *[1..10], {:prompt => "個数選択"}, class:"ml-3" %>
+                <%= f.hidden_field :item_id, :value => @item.id %>
+		        <%= f.submit "カートに入れる", class:"btn btn-success ml-4" %>
+		      </div>
 		    <% else %>
 		      <p class="text-secondary ml-3"><strong>販売停止中</strong></p>
 		    <% end %>
-		  </div>
+		  <!--</div>-->
 	  <% end %>
 	</div>
 	  
