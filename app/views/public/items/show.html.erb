@@ -20,7 +20,7 @@
 		  	<% if @item.is_active == true %>
 		  	  <p class="text-success"><strong>販売中</strong></p>
 		      <div class="row pt-2">
-		      	<%= f.select :amount, *[1..10], {:prompt => "個数選択"}, class:"ml-3" %>
+		      	<%= f.select :amount, *[1..20], {:prompt => "個数選択"}, class:"ml-3" %>
                 <%= f.hidden_field :item_id, :value => @item.id %>
 		        <%= f.submit "カートに入れる", class:"btn btn-success ml-4" %>
 		      </div>

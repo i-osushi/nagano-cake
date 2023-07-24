@@ -31,7 +31,6 @@ class Public::CartItemsController < ApplicationController
   end
 
   def destroy_all
-    # @cart_item = CartItem.find(params[:id])
     @cart_items = CartItem.all
     @cart_items.destroy_all
     flash[:alert] = "カートの商品を全て削除しました"
@@ -41,7 +40,7 @@ class Public::CartItemsController < ApplicationController
   def destroy
     cart_item = CartItem.find(params[:id])
     cart_item.destroy
-    flash.now[:alert] = "商品をを削除しました"
+    flash[:alert] = "商品をを削除しました"
     redirect_to cart_items_path
   end
 
