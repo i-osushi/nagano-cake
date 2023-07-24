@@ -16,4 +16,8 @@ enum status: {waiting_payment: 0, confirm_payment: 1, producting: 2, waiting_del
 # お届け先　｛自分の住所　登録済み住所　新規住所｝
 enum select_address: { own_address: 0, registered_address: 1, new_address: 2}
 
+def total
+    order_details.inject(0) { |sum, order_detail| sum + order_detail.subtotal }
+  end
+
 end

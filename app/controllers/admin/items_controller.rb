@@ -18,7 +18,7 @@ class Admin::ItemsController < ApplicationController
         @item = Item.new(item_params)
         if @item.save
           flash[:notice] = "Book was successfully updated."
-          redirect_to admin_items_path(@item)
+          redirect_to admin_item_path(@item)
         else
           render 'new'
         end
