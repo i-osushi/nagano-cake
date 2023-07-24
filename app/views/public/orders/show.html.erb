@@ -19,9 +19,9 @@
 
          <table class="col-3 m-2 tabre table-bordered ">
         <thead>
-          <tr><th class="table-danger">商品合計</th><td><%= @order.total_payment - @order.shipping_cost %>円</td></tr>
-          <tr><th class="table-danger">送料</th><% @order.shipping_cost = 800 %><td><%= @order.shipping_cost %>円</td></tr>
-          <tr><th class="table-danger">ご請求額</th><td><%= @order.total_payment %>円</td></tr>
+          <tr><th class="table-danger">商品合計</th><td>￥<%= @order.total_payment - @order.shipping_cost %></td></tr>
+          <tr><th class="table-danger">送料</th><% @order.shipping_cost = 800 %><td>￥<%= @order.shipping_cost %></td></tr>
+          <tr><th class="table-danger">ご請求額</th><td>￥<%= @order.total_payment %></td></tr>
         </thead>
        </table>
   </div>
@@ -41,9 +41,9 @@
           <% @order.order_details.each do |f| %>
           <tr>
             <td><%= f.item.name %></td>
-            <td><%= f.item.price %></td>
-            <td><%= f.amount %></td>
-            <td><%= f.item.price * f.amount %></td>
+            <td>￥<%= ((f.item.price)*1.1).to_i %></td>
+            <td><%= f.amount %>個</td>
+            <td>￥<%= ((f.item.price * f.amount)*1.1).to_i %></td>
           </tr>
           <% end %>
         </tbody>
