@@ -10,13 +10,13 @@
       <h3><%= @genre.name %>一覧(全<%= @genre.items.count %>件)</h3>
         <div class="row">
             <% @genre.items.each do |item| %>
-              <div class="col-3">
-                  <%= link_to item_path(item) ,style: "color: black;" do %>
-                    <%= image_tag item.image, class: "rounded", size:"200x150", style: "object-fit: cover;" %>
-                    <p><%= item.name %></p>
-                    <p>￥<%= item.add_tax_price.to_s(:delimited) %>（税込）</p>
-                  <% end %>
-              </div>
+            <div class="col-3">
+                <%= link_to item_path(item) ,style: "color: black;" do %>
+                  <%= image_tag item.image, class: "rounded", size:"200x150", style: "object-fit: cover;" %>
+                  <p><%= item.name %></p>
+                  <p>￥<%= item.add_tax_price.to_s(:delimited) %>（税込）</p>
+                <% end %>
+            </div>
             <% end %>
         </div>
     </div>
