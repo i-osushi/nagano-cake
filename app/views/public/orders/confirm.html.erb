@@ -16,9 +16,9 @@
           <tr>
            <td><%= image_tag f.item.get_image(60, 50) %>
                <%= f.item.name %></td>
-           <td><%= f.item.price %></td>
+           <td>￥<%= ((f.item.price)*1.1).to_i %></td>
            <td><%= f.amount %>個</td>
-           <td><%= f.subtotal %>円</td>
+           <td>￥<%= f.subtotal %></td>
           </tr>
          </tbody>
          <% end %>
@@ -26,9 +26,9 @@
 
        <table class="col-4 m-2 tabre payment_method_table table-bordered border-dark ">
         <thead>
-          <tr><th class="table-danger">送料</th><% @order.shipping_cost = 800 %><td><%= @order.shipping_cost %>円</td></tr>
-          <tr><th class="table-danger">商品合計</th><td><%= @total.to_i %>円</td></tr>
-          <tr><th class="table-danger">請求合計</th><% @order.total_payment = @order.shipping_cost + @total.to_i %><td><%= @order.total_payment %>円</td></tr>
+          <tr><th class="table-danger">送料</th><% @order.shipping_cost = 800 %><td>￥<%= @order.shipping_cost %></td></tr>
+          <tr><th class="table-danger">商品合計</th><td>￥<%= @total.to_i %></td></tr>
+          <tr><th class="table-danger">請求合計</th><% @order.total_payment = @order.shipping_cost + @total.to_i %><td>￥<%= @order.total_payment %></td></tr>
         </thead>
        </table>
 
