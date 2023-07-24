@@ -1,6 +1,6 @@
+  <%= form_with model: address, local:true do |f| %>
     <div class="row px-4 my-3">
       <div class="col-3">
-        <%= form_with model: address, local:true do |f| %>
          <label>郵便番号（ハイフンなし）</label>
       </div>
       <div class="col-3">
@@ -30,7 +30,6 @@
            <% else %>
            <%= f.submit "変更内容を保存", class: "btn btn-sm btn-success float-end" %>
            <% end %>
-      　<% end %>
-
       　</div>
     </div>
+ <% end %>

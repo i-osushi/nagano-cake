@@ -19,8 +19,8 @@
             <div class="col-3">
               <%= link_to item_path(item.id) ,style: "color: black;", data: {"turbolinks" => false} do %>
                 <%= image_tag item.image, class: "rounded mr-1", size:"200x150", style: "object-fit: cover;" %>
-                <p class="font-weight-bold"><%= item.name %></p>
-                <p class="font-weight-bold">¥<%= item.price.to_s(:delimited) %></p>
+                <p><%= item.name %></p>
+                <p>¥<%= item.add_tax_price.to_s(:delimited) %>（税込）</p>
               <% end %>
             </div>
           <% end %>
