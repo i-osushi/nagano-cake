@@ -32,7 +32,7 @@ class Public::OrdersController < ApplicationController
       @order.address = params[:order][:address]
       @order.name = params[:order][:name]
     else
-      render "index"
+      render "new"
     end
 
   # カートに入っているすべての情報を取得する
@@ -42,11 +42,14 @@ class Public::OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    @order.save
+    
     # 新規住所の保存
     if params[:order][:select_address] == "new_address"
       current_customer.address.create(address_params)
     end
+    
+    @order.save
+
     # カートアイテム商品詳細の保存
     current_customer.cart_items.each do |cart_item|
       @order_details = OrderDetail.new
@@ -60,7 +63,6 @@ class Public::OrdersController < ApplicationController
     # カートアイテム内の商品削除
     @cart_items = current_customer.cart_items.all
     @cart_items.destroy_all
-    
     redirect_to orders_complete_path
   end
 
