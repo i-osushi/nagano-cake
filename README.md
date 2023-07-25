@@ -77,11 +77,8 @@
   [機能一覧](https://github.com/i-osushi/nagano-cake/files/12157484/ecsite_functions_list.pdf)
 
 ## 製作者
- *チームおすし*
- 工藤　良介<br> 
- [(Ryo0203VB)](https://github.com/Ryo0203VB)
- 二宮　茉弓<br> 
- [(NNMY03)](https://github.com/NNMY03)
- 安田　奈留美<br> 
- [(ysdnrm)](https://github.com/ysdnrm)
+ *チームおすし*<br>
+ 工藤　良介 [(Ryo0203VB)](https://github.com/Ryo0203VB)<br>
+ 二宮　茉弓 [(NNMY03)](https://github.com/NNMY03)<br>
+ 安田　奈留美 [(ysdnrm)](https://github.com/ysdnrm)
  
