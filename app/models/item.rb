@@ -26,6 +26,7 @@ validates :price, presence: true
     end
     image.variant(resize_to_limit: [height, width]).processed
   end
+
   # 税込価格
   def add_tax_price
     tax = 1.1
