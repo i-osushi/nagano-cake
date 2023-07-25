@@ -1,0 +1,47 @@
+
+
+<div class="container">
+
+<div class="row mr-2">
+<% if @address.errors.any? %>
+  <strong><%= @address.errors.count %>件のエラーが発生しました</strong>
+  <ul class="row ml-2" style="list-style: none;">
+    <% @address.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+</div>
+
+  <div class="row px-4">
+     <h4>配送先登録/一覧</h4>
+  </div>
+
+  <%= render 'form', address: @address %>
+
+<div class="container my-5">
+<div class='row'>
+<table class="table table-bordered " >
+  <thead class="table-danger">
+    <tr>
+      <th>郵便番号</th>
+      <th>住所</th>
+      <th>宛名</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @addresses.each do |addresses| %>
+    <tr>
+      <td><%= addresses.postal_code %></td>
+      <td><%= addresses.address%></td>
+      <td><%= addresses.name%></td>
+      <td><%= link_to "編集する", edit_address_path(addresses.id), class: "btn btn-sm btn-success float-end" %>
+          <%= link_to "削除する", address_path(addresses.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger float-end" %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+</div>
+</div>

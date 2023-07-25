@@ -1,0 +1,54 @@
+<div class='container'>
+ <h4>注文情報確認</h4>
+
+  <div class='row '>
+      <h5 class="col-7"><strong>注文情報</strong></h5>
+      <h5 class="col-5"><strong>請求情報</strong></h5>
+  </div>
+
+    <div class='row m-1'>
+       <table class="col-7 m-2 table-bordered ">
+        <thead>
+          <tr><th class="table-danger">注文日</th><td><%= @order.created_at.strftime('%Y/%m/%d') %></td></tr>
+          <tr><th class="table-danger">配送先</th><td>〒<%= @order.postal_code %><br><%= @order.address %><br><%= @order.name %></td></tr>
+          <tr><th class="table-danger">支払方法</th><td><%= @order.payment_method_i18n %></td></tr>
+          <tr><th class="table-danger">ステータス</th><td><%= @order.status_i18n %></td></tr>
+        </thead>
+       </table>
+
+
+         <table class="col-3 m-2 tabre table-bordered ">
+        <thead>
+          <tr><th class="table-danger">商品合計</th><td>￥<%= (@order.total_payment - @order.shipping_cost).to_s(:delimited)%></td></tr>
+          <tr><th class="table-danger">送料</th><% @order.shipping_cost = 800 %><td>￥<%= @order.shipping_cost %></td></tr>
+          <tr><th class="table-danger">ご請求額</th><td>￥<%= @order.total_payment.to_s(:delimited) %></td></tr>
+        </thead>
+       </table>
+  </div>
+
+      <h5><strong>注文内容</strong></h5>
+  <div class="row m-2">
+      <table class="col-10 table-bordered">
+        <thead class="table-danger">
+          <tr>
+            <th>商品</th>
+            <th>単価（税込）</th>
+            <th>個数</th>
+            <th>小計</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @order.order_details.each do |f| %>
+          <tr>
+            <td><%= f.item.name %></td>
+            <td>￥<%= ((f.item.price)*1.1).to_i %></td>
+            <td><%= f.amount %>個</td>
+            <td>￥<%= ((f.item.price * f.amount)*1.1).to_i %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+  </div>
+
+</div>
