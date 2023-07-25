@@ -2,7 +2,6 @@ class Public::CartItemsController < ApplicationController
   before_action :authenticate_customer!
 
   def index
-    # @cart_item = CartItem.new
     @cart_items =  current_customer.cart_items.all
     @cart_item = current_customer
     @total = @cart_items.inject(0) { |sum, cart_item| sum + cart_item.subtotal }
@@ -22,7 +21,6 @@ class Public::CartItemsController < ApplicationController
     end
   end
 
-
   def update
     @cart_item = CartItem.find(params[:id])
     @cart_item.update(cart_item_params)
@@ -30,6 +28,7 @@ class Public::CartItemsController < ApplicationController
     redirect_to cart_items_path
   end
 
+# カートを空にする
   def destroy_all
     @cart_items = CartItem.all
     @cart_items.destroy_all
@@ -37,6 +36,7 @@ class Public::CartItemsController < ApplicationController
     redirect_to cart_items_path
   end
 
+# カート内商品の削除
   def destroy
     cart_item = CartItem.find(params[:id])
     cart_item.destroy
@@ -50,6 +50,5 @@ class Public::CartItemsController < ApplicationController
   def cart_item_params
     params.require(:cart_item).permit(:amount, :item_id, :price)
   end
-
 
 end
