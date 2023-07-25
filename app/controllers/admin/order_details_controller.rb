@@ -10,9 +10,9 @@ class Admin::OrderDetailsController < ApplicationController
   is_updated = true
     if @order_detail.update(order_detail_params)
       @order.update(status: 2) if @order_detail.making_status == "producting"
-      @order_details.each do |order_detail| 
-        if order_detail.making_status != "completion" 
-          is_updated = false 
+      @order_details.each do |order_detail|
+        if order_detail.making_status != "completion"
+          is_updated = false
         end
       end
       @order.update(status: 3) if is_updated

@@ -7,9 +7,12 @@ Rails.application.routes.draw do
    get "/homes" => "homes#top"
    resources :items, only:[:index, :create, :new, :show, :edit, :update]
    resources :genres, only:[:index, :create, :edit, :update]
-   resources :customers, only:[:index, :show, :edit, :update]
+   resources :customers, only:[:index, :show, :edit, :update] do
+     get 'orders' => 'orders#index'
+   end
    resources :orders, only: [:show, :update]
    resources :order_details, only: [:update]
+
  end
 
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
