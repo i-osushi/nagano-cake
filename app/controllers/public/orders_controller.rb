@@ -42,12 +42,12 @@ class Public::OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    
+
     # 新規住所の保存
     if params[:order][:select_address] == "new_address"
       current_customer.address.create(address_params)
     end
-    
+
     @order.save
 
     # カートアイテム商品詳細の保存
@@ -59,7 +59,7 @@ class Public::OrdersController < ApplicationController
       @order_details.price = (cart_item.item.price*1.08).floor
       @order_details.save
     end
-    
+
     # カートアイテム内の商品削除
     @cart_items = current_customer.cart_items.all
     @cart_items.destroy_all
