@@ -11,7 +11,6 @@
          </tr>
        </thead>
        <% @cart_items.each do |f| %>
-       <% @total = ( f.item.price* f.amount)*1.1%>
          <tbody>
           <tr>
            <td><%= image_tag f.item.get_image(60, 50) %>
@@ -21,6 +20,7 @@
            <td>￥<%= f.subtotal %></td>
           </tr>
          </tbody>
+         <% @total += ((f.item.price* f.amount)*1.1).to_i %>
          <% end %>
        </table>
 
