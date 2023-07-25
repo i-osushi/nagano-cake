@@ -28,7 +28,7 @@
   ![顧客側のフロー](https://github.com/i-osushi/nagano-cake/assets/133837502/afecbdb4-7e83-460a-9f7d-e7396c797a90)
   
   管理者の場合<br>
-  ![店側のフロー](https://gyazo.com/54f4fac557417f90203fcbd5d54d4b45)
+  ![店側のフロー](https://github.com/i-osushi/nagano-cake/assets/133837502/d809995a-ae78-49ac-875c-637a7c526494)
   
 ## アプリケーション作成に至った背景
   元々近隣住民が顧客だったが、昨年始めたInstagramから人気となり、全国から注文が来るようになった。<br>
