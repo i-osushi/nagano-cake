@@ -63,6 +63,7 @@ class Public::OrdersController < ApplicationController
     # カートアイテム内の商品削除
     @cart_items = current_customer.cart_items.all
     @cart_items.destroy_all
+
     redirect_to orders_complete_path
   end
 

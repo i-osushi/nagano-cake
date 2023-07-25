@@ -1,7 +1,7 @@
 <!--カート内商品一覧画面-->
 <div class="container">
   <h3 class="font-weight-bold">ショッピングカート</h3>
-    <!--カートが空の時-->
+    <!--カートがすべて空の時は-->
     <% if @cart_items.count == 0 %>
       <div class="mt-5" style="text-align:center;">
         <p class="h4">カート内に商品はありません</p>
@@ -12,7 +12,7 @@
         </div>
       </div>
     <% else %>
-    <!--カートに商品がある時-->
+    <!--カートに商品がある時は-->
       <div class="row">
         <div class="col-9"></div>
         <div classs="mt-5">
