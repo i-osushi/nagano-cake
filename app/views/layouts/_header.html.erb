@@ -39,7 +39,7 @@
             <% end %>
           </li>
 
-          <div class="search">
+          <form class="search">
             <%= form_with model: @genre do |f| %>
                 <%= f.text_field :genre, placeholder: "キーワード検索" %>
                   <i class="fas fa-search" style="color: #f7f9fc;"></i>

@@ -1,24 +1,71 @@
 # README
+![Nagano Cake](https://804c7d71ae2641fca1ead8bf57a6079e.vfs.cloud…2f2cbf7d11e02c84cfa417419d06e1f3f0aa01bb0f39e.png)
+ 
+## アプリケーション名
+ 「Nagano Cake」
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+##アプリケーション概要
+ 長野県にある小さな洋菓子店「ながのCAKE」の商品を通販するためのECサイト開発です。
 
-Things you may want to cover:
+##通販についての説明
+ -通販では注文に応じて製作する受注生産型としている。
+ -現在通販での注文量は十分に対応可能な量のため、1日の受注量に制限は設けない。
+ -送料は1配送につき全国一律800円。
+ -友人や家族へのプレゼントなど、注文者の住所以外にも商品を発送できる。
+ -支払方法はクレジットカード、銀行振込から選択できる。
 
-* Ruby version
+##デモ
 
-* System dependencies
 
-* Configuration
+##URL
 
-* Database creation
 
-* Database initialization
+##テスト用アカウント
+ 管理者<br>
+  メールアドレス：osushi@teamI<br>
+  パスワード：osushi<br>
+  
+ 顧客<br>
+  メールアドレス：a@a<br>
+  パスワード：aaabbb<br>
 
-* How to run the test suite
+##利用方法
+  顧客の場合<br>
+  
+  
+  管理者の場合<br>
+  
+  
+##アプリケーション作成に至った背景
+  元々近隣住民が顧客だったが、昨年始めたInstagramから人気となり、全国から注文が来るようになった。<br>
+  InstagramのDMやメールで通販の注文を受けていたが、情報管理が煩雑になってきたため、管理機能を含んだ通販サイトを開設しようと思い至った。
 
-* Services (job queues, cache servers, search engines, etc.)
+##用語の定義
 
-* Deployment instructions
+ | 用語           | 意味 |
+ | -------------- | ---- |
+ | 顧客           | 「Nagano Cake」 の商品を購入する人（客）
+ | 管理者         | 店で働く事務員・パティシエ等 
+ | 注文ステータス | 注文の状態遷移を表す（後述）。
+ | 製作ステータス | 注文に紐付く注文商品の状態遷移を表す（後述）。
+ | 販売ステータス | 商品の販売状況を表す。現状、販売中、売切れの2パターンがある。<br>販売停止商品は「売切れ」をセットする。
+ | 会員ステータス | 現状、有効・退会の2パターンがある。
+ | ジャンル       | 商品の種類。
+ | 注文個数       | 1回の注文に紐付く注文個数の合計。<br>例）商品Aを3個、商品Bを2個注文→注文個数は5。
+ | 商品小計       | 商品単価（税込）×個数<br>例）1,200円（税込）の商品を2個購入＝商品小計は2,400円
 
-* ...
+##各種ステータス
+
+ 注文〜発送まで、下記のステータスで注文及び注文内容を管理する。
+ 
+ | ステータス名 | 用途 | ステータス | 設定タイミング
+ | ------------
+ | 注文ステータス 
+ | 製作ステータス 
+
+### 見出し3
+*強調*
+
+**もっと強調**
+
+[文字列](URL)
