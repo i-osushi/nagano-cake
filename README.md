@@ -1,5 +1,5 @@
 # README
-![Nagano Cake](big-naganocake.png)
+![Nagano Cake](https://gyazo.com/7a9c3babb6811c22593f9410e51c0bd4)
  
 ## アプリケーション名
  「Nagano Cake」
@@ -74,7 +74,7 @@
   ![おすしのER図](https://github.com/i-osushi/nagano-cake/assets/133837502/506837ad-e9f3-4b7d-9fe6-d153d3c0fb65)
 
 ## 機能一覧
-  [機能一覧](https://github.com/i-osushi/nagano-cake/files/12157484/ecsite_functions_list.pdf)
+  [機能一覧](https://gyazo.com/8a06f9d5bdb13a0367174ece6c807765)
 
 ## 製作者
  *チームおすし*<br>
