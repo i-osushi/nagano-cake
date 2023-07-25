@@ -19,9 +19,9 @@
 
          <table class="col-3 m-2 tabre table-bordered ">
         <thead>
-          <tr><th class="table-danger">商品合計</th><td>￥<%= @order.total_payment - @order.shipping_cost %></td></tr>
+          <tr><th class="table-danger">商品合計</th><td>￥<%= (@order.total_payment - @order.shipping_cost).to_s(:delimited)%></td></tr>
           <tr><th class="table-danger">送料</th><% @order.shipping_cost = 800 %><td>￥<%= @order.shipping_cost %></td></tr>
-          <tr><th class="table-danger">ご請求額</th><td>￥<%= @order.total_payment %></td></tr>
+          <tr><th class="table-danger">ご請求額</th><td>￥<%= @order.total_payment.to_s(:delimited) %></td></tr>
         </thead>
        </table>
   </div>
