@@ -25,7 +25,7 @@
 
 ## 利用方法
   顧客の場合<br>
-  ![顧客側のフロー](https://gyazo.com/18734fdbf45e0079cf674ed736adf2c8)
+  ![顧客側のフロー](https://github.com/i-osushi/nagano-cake/assets/133837502/afecbdb4-7e83-460a-9f7d-e7396c797a90)
   
   管理者の場合<br>
   ![店側のフロー](https://gyazo.com/54f4fac557417f90203fcbd5d54d4b45)
