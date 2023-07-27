@@ -29,6 +29,7 @@ class Public::CustomersController < ApplicationController
     @customer = current_customer
     # is_deletedカラムをtrueに変更することにより削除フラグを立てる
     @customer.update(is_deleted: true)
+    # セッション(ページ遷移しても以前入力した情報を保持することができる機能)情報を全て削除
     reset_session
     redirect_to root_path
   end
