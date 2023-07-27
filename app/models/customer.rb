@@ -20,4 +20,8 @@ validates :address, presence: true
 validates :telephone_number, presence: true
 validates :email, presence: true
 
+# ログイン時に退会済みのユーザーが同じアカウントでログイン出来ないよう制約
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
 end
